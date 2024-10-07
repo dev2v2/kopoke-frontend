@@ -122,6 +122,14 @@
     align-items: center;
 }
 
+.top-screen img{
+    width:80%;
+    max-width: 200px;
+    height:auto;
+    display:block;
+    margin:0 auto;
+}
+
 .bottom-screen {
     flex: 3 !important;
     display: flex;

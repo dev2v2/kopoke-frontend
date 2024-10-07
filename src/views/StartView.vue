@@ -16,10 +16,11 @@
           caret-animation="blink"
         ></vue-typer>
       </div>
-      <div class="mt-5"><img src="../../public/doctor.png" /></div>
+      <div class="mt-5"><img src="../assets/img/docter.webp"/></div>
     </div>
     <div class="bottom-screen">
       <p @click="startAdventure" class="speech-answer">▶ 포켓몬 세계로 ···</p>
+      <a href="/select">dev</a>
     </div>
   </Gameboy>
 </template>
