@@ -1,0 +1,78 @@
+a {
+    text-decoration: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(180deg, #ec9f19, #ecc519);
+    overflow: hidden;
+}
+
+.main-container {
+    display: flex;
+    height: 90vh;
+}
+
+.left-container,
+.right-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.right-container {
+    flex-direction: row !important;
+}
+
+.welcome-message {
+    color: black;
+    text-align: center;
+    padding: 10px;
+    font-size: 24px;
+}
+
+.pokemon-info {
+    flex: 1;
+    background-color: #003A70;
+    color: white;
+    padding: 20px;
+    font-size: 16px;
+    overflow: auto;
+}
+
+.right-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.timeline,
+.chat {
+    flex: 1;
+    background-color: #007ACC;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    padding: 20px;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .main-container {
+        flex-direction: column;
+    }
+
+    .left-container,
+    .right-container {
+        width: 100%;
+    }
+
+    .timeline,
+    .chat {
+        height: 200px;
+    }
+}
