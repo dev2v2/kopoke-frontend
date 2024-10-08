@@ -29,7 +29,7 @@
 
 .gameboy .kdj {
     position: absolute;
-    top: 75%;
+    bottom: 18%;
     left: 45%;
     color: #4d5b33;
     font-size: 16px;
@@ -81,7 +81,7 @@
     width: 38%;
     height: 100%;
     top: 0;
-    left: 32%;
+    left: 31%;
 }
 
 .d-pad:after {
@@ -122,12 +122,12 @@
     align-items: center;
 }
 
-.top-screen img{
-    width:80%;
+.top-screen img {
+    width: 80%;
     max-width: 200px;
-    height:auto;
-    display:block;
-    margin:0 auto;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
 .bottom-screen {
@@ -177,6 +177,11 @@
     content: "I";
     animation: blink 1s step-start infinite;
     font-size: 16px;
+}
+
+.nickname {
+    background-color: #ffdd6e;
+    padding: 2px;
 }
 
 @keyframes blink {
