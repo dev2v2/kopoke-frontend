@@ -4,14 +4,13 @@
       <div class="speech-bubble">
         <span class="typed-element"></span>
       </div>
-      <div class="mt-5">
-          <img
-            :src="currentSprite"
-            @mouseover="showBackSprite"
-            @mouseout="showFrontSprite"
-            @mouseover.once="playCry"
-            alt="Pokemon Sprite"
-          />
+      <div class="mt-5 sprite">
+        <img
+          :src="currentSprite"
+          @mouseover="handleMouseOver"
+          @mouseout="showFrontSprite"
+          alt="Pokemon Sprite"
+        />
       </div>
     </div>
     <div class="bottom-screen">
@@ -25,8 +24,9 @@ import { onMounted, ref } from "vue";
 import Gameboy from "@/components/Gameboy.vue";
 import Typed from "typed.js";
 import { fetchPokemonData, sendPokemonDataToBackend } from "@/api/pokemonApi";
+import router from "@/router";
 
-const selectedNumber = 35; // 선택된 번호, 실제로는 사용자 입력에 따라 바뀝니다.
+const selectedNumber = 2; // 선택된 번호, 실제로는 사용자 입력에 따라 바뀝니다.
 const pokemonData = ref(null);
 const currentSprite = ref(""); // 현재 노출할 스프라이트 이미지
 const audio = ref(null);
@@ -52,10 +52,6 @@ onMounted(async () => {
           pokemonData.value.weight / 10
         } kg`,
         `타입은 ${pokemonData.value.type}`,
-        `${pokemonData.value.koreanName}의 스탯: ${pokemonData.value.stats
-          .map((stat) => `${stat.name}: ${stat.value}`)
-          .join(", ")}`,
-        //`${pokemonData.value.koreanName}의 특징: ${pokemonData.value.koreanFlavors}`,
       ],
       typeSpeed: 80,
       backSpeed: 50,
@@ -74,6 +70,12 @@ onMounted(async () => {
   }
 });
 
+// 마우스 오버 시 뒷모습 노출 및 울음소리 재생
+const handleMouseOver = () => {
+  showBackSprite();
+  playCry();
+};
+
 // 마우스 오버 시 뒷모습 노출
 const showBackSprite = () => {
   if (pokemonData.value?.backSprite) {
@@ -89,12 +91,23 @@ const showFrontSprite = () => {
 // 울음소리 재생
 const playCry = () => {
   if (audio.value) {
+    audio.value.pause(); // 기존에 재생 중인 오디오가 있으면 일시 정지
+    audio.value.currentTime = 0; // 오디오를 처음부터 재생
     audio.value.play();
   }
 };
+
+const startAdventure = async () => {
+  router.push("/main");
+};
 </script>
+
 <style scoped>
-img {
-  width: 200% !important;
+.sprite{
+  width:350px;
+}
+
+.sprite img{
+  max-width: 350px !important;
 }
 </style>

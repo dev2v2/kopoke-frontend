@@ -109,22 +109,25 @@ window.removeEventListener("keydown", handleKeydown);
 ul {
   list-style-type: none;
   padding: 0;
+  position: relative;
 }
 
 li {
   cursor: pointer;
-  margin: 10px;
-  font-size: 1.2em;
-  font-weight: bold;
-  color: #333;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
 }
 
-li.selected {
-  color: blue;
-  background-color: lightgray;
-}
-
-li:hover {
-  color: blue;
+li.selected::before {
+  content: "▶";
+  margin-right: 5px;
+  position: absolute;
+  left: -20px;
+  top: 40%;
+  transform: translateY(-50%);
+  font-size: 60%;
 }
 </style>

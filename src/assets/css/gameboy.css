@@ -1,14 +1,3 @@
-@font-face {
-    font-family: 'DungGeunMo';
-    src: url('/src/assets/fonts/DungGeunMo.eot') format('eot'),
-        url('/src/assets/fonts/DungGeunMo.woff') format('woff'),
-        url('/src/assets/fonts/DungGeunMo.woff2') format('woff2');
-}
-
-* {
-    font-family: "DungGeunMo" !important;
-}
-
 /* gameboy start */
 .gameboy {
     width: auto;
@@ -44,7 +33,7 @@
 }
 
 /* 화면 부분 */
-.screen {
+.gameboy .screen {
     width: 80%;
     height: auto;
     background-color: #4d5b33;
@@ -61,7 +50,7 @@
 }
 
 /* 방향 버튼 */
-.d-pad {
+.gameboy .d-pad {
     width: 20%;
     height: auto;
     position: absolute;
@@ -70,21 +59,21 @@
     aspect-ratio: 1 / 1;
 }
 
-.d-pad:before,
-.d-pad:after {
+.gameboy .d-pad:before,
+.gameboy .d-pad:after {
     content: "";
     position: absolute;
     background-color: #333;
 }
 
-.d-pad:before {
+.gameboy .d-pad:before {
     width: 38%;
     height: 100%;
     top: 0;
     left: 31%;
 }
 
-.d-pad:after {
+.gameboy .d-pad:after {
     width: 100%;
     height: 35%;
     top: 30%;
@@ -92,7 +81,7 @@
 }
 
 /* 버튼 A, B */
-.button {
+.gameboy .button {
     width: 10%;
     height: auto;
     background-color: #b15b5b;
@@ -101,19 +90,17 @@
     aspect-ratio: 1 / 1;
 }
 
-.button.a {
+.gameboy .button.a {
     top: 80%;
     left: 80%;
 }
 
-.button.b {
+.gameboy .button.b {
     top: 90%;
     left: 62%;
 }
 
-/* gameboy end */
-
-.top-screen {
+.gameboy .top-screen {
     flex: 7 !important;
     display: flex;
     justify-content: flex-end;
@@ -122,7 +109,7 @@
     align-items: center;
 }
 
-.top-screen img {
+.gameboy .top-screen img {
     width: 80%;
     max-width: 200px;
     height: auto;
@@ -130,7 +117,7 @@
     margin: 0 auto;
 }
 
-.bottom-screen {
+.gameboy .bottom-screen {
     flex: 3 !important;
     display: flex;
     justify-content: center;
@@ -138,7 +125,7 @@
 }
 
 /* 말풍선 */
-.speech-bubble {
+.gameboy .speech-bubble {
     width: 80%;
     padding: calc(1vh + 1vw);
     background-color: white;
@@ -150,7 +137,7 @@
     font-size: 16px;
 }
 
-.speech-bubble::after {
+.gameboy .speech-bubble::after {
     content: "";
     position: absolute;
     top: 100%;
@@ -161,56 +148,37 @@
     border-color: white transparent transparent transparent;
 }
 
-.speech-text {
+.gameboy .speech-text {
     font-size: 16px;
     color: black;
 }
 
-.speech-answer {
+.gameboy .speech-answer {
     font-size: 16px;
     color: white;
     cursor: pointer;
     margin-top: calc(1vh + 1vw);
 }
 
-.speech-answer::after {
+.gameboy .speech-answer::after {
     content: "I";
     animation: blink 1s step-start infinite;
     font-size: 16px;
 }
 
-.nickname {
+.gameboy .nickname {
     background-color: #ffdd6e;
     padding: 2px;
+}
+
+.gameboy li {
+    color: white;
 }
 
 @keyframes blink {
     50% {
         opacity: 0;
     }
-}
-
-ul {
-    list-style: none;
-    color: white;
-    font-size: 16px;
-}
-
-li {
-    position: relative;
-    padding-left: calc(1vh + 1vw);
-}
-
-.arrow {
-    position: absolute;
-    left: -110%;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.pokemon-image {
-    width: 250px;
-    height: 250px;
 }
 
 /* 반응형 추가 */
@@ -220,18 +188,18 @@ li {
         height: calc(100vh - 10%);
     }
 
-    .screen {
+    .gameboy .screen {
         width: 90%;
         height: auto;
     }
 
-    .button {
+    .gameboy .button {
         width: 15%;
         height: auto;
         aspect-ratio: 1 / 1;
     }
 
-    .d-pad {
+    .gameboy .d-pad {
         width: 20%;
         height: auto;
         aspect-ratio: 1 / 1;
