@@ -34,6 +34,16 @@ const nickname = ref("");
 const randomNumbers = ref([]);
 const selectedIndex = ref(0);
 
+// URL에서 token 쿼리 파라미터 추출
+const urlParams = new URLSearchParams(window.location.search);
+const token = urlParams.get("token");
+
+if (token) {
+  // 토큰을 localStorage에 저장
+  localStorage.setItem("access_token", token);
+  console.log("토큰 저장 완료:", token);
+}
+
 // 닉네임 설정
 const setNickname = () => {
   nickname.value = generateRandomNickname();

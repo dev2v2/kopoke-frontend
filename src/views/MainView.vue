@@ -1,22 +1,28 @@
 <template>
-  <img class="main-logo" src="../assets/img/main_logo.png" alt="main logo" />
-  <div class="main-container">
-    <div class="welcome">sss, 포켓몬 세계에 온 것을 환영한다!</div>
-    <div class="pokemon">
-      <div class="sprites">
-        <div class="balls">
-          <span>01</span>
-          <span>02</span>
-          <span>03</span>
-          <span>04</span>
-          <span>05</span>
-          <span>06</span>
-        </div>
-        <div class="sprite">
-          <div><img src="" alt="" /></div>
-          <div>포켓몬 설명</div>
+  <div>
+    <div class="main-container">
+      <!-- 환영 메시지 -->
+      <div class="welcome">sss, 포켓몬 세계에 온 것을 환영한다!</div>
+
+      <!-- 포켓몬 섹션 -->
+      <div class="pokemon">
+        <div class="sprites">
+          <div class="balls">
+            <span>01</span>
+            <span>02</span>
+            <span>03</span>
+            <span>04</span>
+            <span>05</span>
+            <span>06</span>
+          </div>
+          <div class="sprite">
+            <div><img src="" alt="" /></div>
+            <div>포켓몬 설명</div>
+          </div>
         </div>
       </div>
+
+      <!-- 챗봇 섹션 -->
       <div class="chatbot">
         <div class="message-container">
           <div
@@ -37,38 +43,46 @@
           <button @click="sendMessage">전송</button>
         </div>
       </div>
-    </div>
-    <div class="community">
-      <div class="chat">
-        <div class="chat-messages-container">
-          <div class="chat-messages">
-            <div v-for="(chat, index) in chatMessages" :key="index" class="chat-message">
-              <strong>{{ chat.user }}:</strong> {{ chat.text }}
+
+      <!-- 커뮤니티 섹션 -->
+      <div class="community">
+        <div class="chat">
+          <div class="chat-messages-container">
+            <div class="chat-messages">
+              <div
+                v-for="(chat, index) in chatMessages"
+                :key="index"
+                class="chat-message"
+              >
+                <strong>{{ chat.user }}:</strong> {{ chat.text }}
+              </div>
+            </div>
+            <div class="user-list">
+              <ul>
+                <li v-for="(user, index) in users" :key="index">{{ user }}</li>
+              </ul>
             </div>
           </div>
-          <div class="user-list">
-            <ul>
-              <li v-for="(user, index) in users" :key="index">{{ user }}</li>
-            </ul>
+          <div class="chat-input">
+            <input
+              type="text"
+              v-model="chatInput"
+              placeholder="메시지를 입력하세요..."
+              @keydown.enter="sendChatMessage"
+            />
+            <button @click="sendChatMessage">전송</button>
           </div>
         </div>
-        <div class="chat-input">
-          <input
-            type="text"
-            v-model="chatInput"
-            placeholder="메시지를 입력하세요..."
-            @keydown.enter="sendChatMessage"
-          />
-          <button @click="sendChatMessage">전송</button>
+
+        <!-- 타임라인 섹션 -->
+        <div class="timeline">
+          <h3>타임라인</h3>
+          <ul>
+            <li v-for="(log, index) in timelineLogs" :key="index">
+              {{ log.time }} - {{ log.event }}
+            </li>
+          </ul>
         </div>
-      </div>
-      <div class="timeline">
-        <h3>타임라인</h3>
-        <ul>
-          <li v-for="(log, index) in timelineLogs" :key="index">
-            {{ log.time }} - {{ log.event }}
-          </li>
-        </ul>
       </div>
     </div>
   </div>
@@ -118,5 +132,3 @@ const timelineLogs = ref([
   { time: "10:10", event: "사용자3이 접속했습니다." },
 ]);
 </script>
-
-<style src="../assets/css/main.css"></style>

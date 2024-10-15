@@ -44,6 +44,8 @@ onMounted(async () => {
       audio.value = new Audio(pokemonData.value.cry);
     }
 
+    console.log(pokemonData.value);
+
     // Typed.js 설정
     const options = {
       strings: [
